@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :pins
   
-  get "library" => "pins#index"
+  get "/library" => "pins#index"
   #resources :pipes
     
   # Example of regular route:
