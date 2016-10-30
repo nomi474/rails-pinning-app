@@ -22,13 +22,15 @@
                   <h4>
                     <!--<a href="<%= pin_path(pin) %>">-->
                     <!--<a href="<%= "/pins/name-#{pin.slug}" %>">-->
-                    <a href="<%= pin_by_name_path(slug: pin.slug) %>">
+                    <!--<a href="<%= pin_by_name_path(slug: pin.slug) %>">
                       <%= "#{pin.title}" %>
-                    </a>
+                    </a>-->
+                    <%= link_to  "#{pin.title}", pin_by_name_path(slug: pin.slug), html_options = {target: "_blank", class: "url"}%>
                   </h4>
-                  <a class="url" href="<%= "#{pin.url}" %>" target="_blank">
+                  <!--<a class="url" href="<%= "#{pin.url}" %>" target="_blank">
                     <%= "#{pin.url.truncate(30)}" %>
-                  </a>
+                  </a>-->
+                  <%= link_to "#{pin.url.truncate(30)}", "#{pin.url}", html_options = {target: "_blank", class: "url"}%>
                 </div>
               </div>
                 <hr/>
