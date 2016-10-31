@@ -1,0 +1,15 @@
+<%= form_tag do %>
+
+<% end %>
+
+<div class="header">
+  <h1>
+    <i class="fa fa-laptop"></i>
+    Hello New Page
+  </h1>
+</div>
+
+<a href="/">
+  <i class="fa fa-arrow-left"></i>
+  Back to Home
+</a>
