@@ -1,6 +1,5 @@
-<%= form_tag do %>
 
-<% end %>
+
 
 <div class="header">
   <h1>
@@ -8,7 +7,6 @@
     Hello New Page
   </h1>
 </div>
-
 <a href="/">
   <i class="fa fa-arrow-left"></i>
   Back to Home

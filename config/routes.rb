@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   
   get '/library' => 'pins#index'
   
-  get '/new' => 'pins#new'
+  get '/pins/new' => 'pins#new'
+  
+  #post '/new' => 'pins#name-:slug'
+  post '/pins' =>'pins#create'
 
   #resources :pipes
     
