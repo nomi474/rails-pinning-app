@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   
   #post '/new' => 'pins#name-:slug'
   post '/pins' =>'pins#create'
+  
+  get '/pins/:id/edit' =>'pins#edit'
+  
+  get '/pins/:id' =>'pins#id'
 
   #resources :pipes
     

@@ -28,13 +28,20 @@ class PinsController < ApplicationController
     if @pin.save
       redirect_to @pin
     else
-      render 'new'
+      @errors = @pin.errors
+      render :new
     end
   end
+  
+  def edit
+    @pin = Pin.find(params[:id])
+    render :edit
+  end
+  
   private
   
   def pin_params
-    params.require(:pin).permit(:title, :url,:slug, :text, :resource_type)
+    params.require(:pin).permit(:title, :url,:slug, :text, :category_id)
   end
   
 end
