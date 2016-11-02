@@ -16,9 +16,9 @@ Rails.application.routes.draw do
   post '/pins' =>'pins#create'
   
   get '/pins/:id/edit' =>'pins#edit'
-  
+    
   get '/pins/:id' =>'pins#id'
-
+  
   #resources :pipes
     
   # Example of regular route:
