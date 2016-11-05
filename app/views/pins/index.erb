@@ -11,11 +11,15 @@
             <div class="pin">
               <div class="pin-header row">
                 <div class="logo-thumbnail col-xs-3">
+                <% if !(pin.image.url.nil?) %>
+                    <p> <img src="<%= "#{pin.image.url(:medium)}" %>"></p>    
+                <% else %>
                   <% if "#{pin.category_id}" == "rails" %>
                       <%= image_tag('rails-logo-thumbnail.png') %>
                   <% elsif "#{pin.category_id}" == "ruby" %>
                       <%= image_tag('ruby-logo-thumbnail.png') %>                
                   <% end %>
+                <% end %>
                 </div>
                 
                  <div class="pin-title col-xs-9">
@@ -34,7 +38,7 @@
                 </div>
               </div>
                 <hr/>
-                <p class="text"><%= "#{pin.text}" %></p>
+                <p class="text"><%= "#{pin.text}" %></p>            
               </div>
           </div>
         <% end %>
