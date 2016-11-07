@@ -23,12 +23,30 @@ RSpec.describe UsersController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  
+before(:each) do 
+  @user = FactoryGirl.build(:user)
+end
+after(:each) do
+	if !@user.destroyed?
+		@user.destroy
+	end
+end
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+	{
+		first_name: @user.first_name,
+		last_name: @user.laaaast_naaaame,
+		email: @user.email,
+		password: @user.passweeeard
+	}
+  }
+
+  let(:valid_attributes) {
+		{
+			first_name: @user.first_name,
+			password: @user.password
+		}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -85,7 +103,7 @@ RSpec.describe UsersController, type: :controller do
         post :create, {:user => valid_attributes}, valid_session
         expect(response).to redirect_to(User.last)
       end
-    end
+    end #end of context "with valid params"
 
     context "with invalid params" do
       it "assigns a newly created but unsaved user as @user" do
@@ -97,8 +115,8 @@ RSpec.describe UsersController, type: :controller do
         post :create, {:user => invalid_attributes}, valid_session
         expect(response).to render_template("new")
       end
-    end
-  end
+    end #end of context "with invalid params"
+  end # end describe
 
   describe "PUT #update" do
     context "with valid params" do
@@ -156,4 +174,42 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "GET login" do
+  it "renders the login view" do
+  end
+end
+ 
+  describe "POST login" do
+  before(:all) do
+    @user = User.create(email: "coder@skillcrush.com", password: "secret")
+    @valid_user_hash = {email: @user.email, password: @user.password}
+    @invalid_user_hash = {email: "", password: ""}
+  end
+ 
+  after(:all) do
+    if !@user.destroyed?
+      @user.destroy
+    end
+  end
+ 
+  it "renders the show view if params valid" do
+    post :authenticate, @valid_user_hash
+    # write expectation here
+  end
+ 
+  it "populates @user if params valid" do 
+    post :authenticate, @valid_user_hash
+    # write expectation here
+  end
+ 
+  it "renders the login view if params invalid" do
+    post :authenticate, @invalid_user_hash
+    # write expectation here     
+  end
+ 
+  it "populates the @errors variable if params invalid" do
+    post :authenticate, @invalid_user_hash 
+    # write expectation here
+  end
+end
 end
