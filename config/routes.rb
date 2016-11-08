@@ -1,14 +1,22 @@
 Rails.application.routes.draw do
   resources :users, except: [:index]
 
+  delete 'logout/:id' => "users#logout", as: :logout
+    
+  get '/signup' => 'users#new', as: :signup
+  
+  get '/login' => 'users#login'
+  
+  post '/login' => 'users#authenticate'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  
+  resources :pins
   # You can have the root of your site routed with "root"
   root 'pins#index'
   
   get 'pins/name-:slug' => 'pins#show_by_name', as: 'pin_by_name'
-  resources :pins
+
   
   get '/library' => 'pins#index'
   
@@ -19,13 +27,8 @@ Rails.application.routes.draw do
   
   get '/pins/:id/edit' =>'pins#edit'
     
-  get '/pins/:id' =>'pins#id'
+  get '/pins/:id' =>'pins#id'  
   
-  get 'signup' => 'users#new', as: :signup
-  
-  get '/login' => 'users#login'
-  
-  post '/login' => 'users#authenticate'
   #resources :pipes
     
   # Example of regular route:

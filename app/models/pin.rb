@@ -5,4 +5,5 @@ class Pin < ActiveRecord::Base
   validates_uniqueness_of :slug
   
   belongs_to :category
+  belongs_to :user
 end

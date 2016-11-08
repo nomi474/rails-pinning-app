@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:show, :edit, :update, :destroy]
+  #before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -28,13 +29,13 @@ class UsersController < ApplicationController
   
   def authenticate
     @user = User.authenticate(params[:email], params[:password])
-      if !(@user.eql?nil)
-        redirect_to @user
-      else
-        #@errors = @user.errors
+    if @user.nil?
         @errors = "You have entered an invalid email or password. Please try again."
         render :login
-      end  
+    else        
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+    end  
   end
   def create
     @user = User.new(user_params)
@@ -74,6 +75,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    session.delete(:user_id)
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -83,5 +87,5 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password)
-    end
+    end    
 end

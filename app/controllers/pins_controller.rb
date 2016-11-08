@@ -1,5 +1,6 @@
 class PinsController < ApplicationController
   
+  before_action :require_login, except: [:show, :show_by_name]
   #GET /pins
   #get /pins.json
   def index
