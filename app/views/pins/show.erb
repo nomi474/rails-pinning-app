@@ -14,8 +14,12 @@
     <!--<a class="url" href="<%= @pin.url %>" target="_blank">
       <%= @pin.url %>
     </a>-->
-	<%= link_to  @pin.url, @pin.url, html_options = {target: "_blank", class: "url"} %>
+	<%= link_to  @pin.url, @pin.url, html_options = {target: "_blank", class: "url"} %>	
   </p>
+		<%= link_to repin_path(pin), class: "btn btn-default", method: "post" do %>
+			<!--<icon here?>-->
+			Repin!
+		<% end %>  
 </div>
 <div>
   <p> <img src="<%= @pin.image.url(:medium) %>"></p>

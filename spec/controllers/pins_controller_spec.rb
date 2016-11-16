@@ -15,16 +15,17 @@ describe "GET new" do
     end
   end
   
-  describe "POST create" do
+  describe "POST create" do	 
+	
     before(:each) do
       @pin_hash = { 
         title: "Rails Wizard", 
         url: "http://railswizard.org", 
         slug: "rails-wizard", 
-        text: "A fun and helpful Rails Resource",
-		category_id: "rails"}    
-        #resource_type: "rails"}    
+        text: "A fun and helpful Rails Resource"}  
+		Category.find_by_name: "rails"		
     end
+	
     
     after(:each) do
       pin = Pin.find_by_slug("rails-wizard")

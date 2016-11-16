@@ -1,4 +1,5 @@
 	<%= form_for(@pin, multipart: true) do |f| %>
+		<%= f.hidden_field :user, value: current_user %>  
 		<div class="form-group">
 		  <label for="pin_image">Image</label>
 		  <%= f.file_field :image  %>

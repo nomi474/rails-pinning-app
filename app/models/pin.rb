@@ -4,6 +4,9 @@ class Pin < ActiveRecord::Base
   validates_presence_of :title, :url, :slug, :text, :category_id, :image
   validates_uniqueness_of :slug
   
+  
   belongs_to :category
   belongs_to :user
+  has_many :pinnings
+  has_many :users, through: :pinnings
 end

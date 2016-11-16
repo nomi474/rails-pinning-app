@@ -38,7 +38,11 @@
                 </div>
               </div>
                 <hr/>
-                <p class="text"><%= "#{pin.text}" %></p>            
+                <p class="text"><%= "#{pin.text}" %></p>
+                <%= link_to repin_path(pin), class: "btn btn-default", method: "post" do %>
+                  <!--<icon here?>-->
+                  Repin!
+                <% end %>  
               </div>
           </div>
         <% end %>
