@@ -1,15 +1,25 @@
 require 'spec_helper'
 RSpec.describe PinsController do
+	describe "GET index" do	 
+		  it 'renders the index template' do
+			get :index
+			expect(response).to render_template("index")
+		  end		
+	end
+	
 	describe "GET edit" do
 		# get to /pins/id/edit
 		# responds successfully
+		pin = Pin.find_by_slug("rails-tutorial")
 		it 'responds with successfully' do
-		  get :edit
+		  #pin = Pin.find_by_slug("rails-tutorial")
+		  get :edit, :id => pin.id 
 		  expect(response.success?).to be(true)
 		end
 		# renders the edit template
 		it 'renders the edit view' do
-		  get :edit      
+		  #pin = Pin.find_by_slug("rails-tutorial")
+		  get :edit, :id => pin.id      
 		  expect(response).to render_template(:edit)
 		end
 		

@@ -40,5 +40,6 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   
   #Locataion for the convert program, which is the ImageMagick command-line utility that Paperclip needs to access.
-  Paperclip.options[:command_path] = "C:\Program Files\ImageMagick-7.0.3-Q16\imdisplay.exe"
+  Paperclip.options[:command_path] = 'C:\Program Files (x86)\GnuWin32\bin'
+  #"C:\Program Files\ImageMagick-7.0.3-Q16\imdisplay.exe"
 end

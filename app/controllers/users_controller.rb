@@ -22,8 +22,9 @@ class UsersController < ApplicationController
   def edit
   end
   
-  def login
+  def login  
   end
+
   # POST /users
   # POST /users.json
   
@@ -37,6 +38,7 @@ class UsersController < ApplicationController
         redirect_to user_path(@user)
     end  
   end
+
   def create
     @user = User.new(user_params)
 
@@ -47,9 +49,9 @@ class UsersController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+      end # end if
+    end # end do
+  end # end method 'create'
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
@@ -78,6 +80,7 @@ class UsersController < ApplicationController
   def logout
     session.delete(:user_id)
   end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

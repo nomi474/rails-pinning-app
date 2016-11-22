@@ -1,4 +1,15 @@
 	<%= form_for(@pin, multipart: true) do |f| %>
+      <% if @pin.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@pin.errors.count, "error") %> prohibited this pin from being saved:</h2>
+
+          <ul>
+          <% @pin.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
 		<%= f.hidden_field :user, value: current_user %>  
 		<div class="form-group">
 		  <label for="pin_image">Image</label>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :users, except: [:index]
-  
-  delete 'logout/:id' => "users#logout", as: :logout
-    
+
+  delete '/logout/:id' => 'users#logout', as: :logout
+
   get '/signup' => 'users#new', as: :signup
   
   get '/login' => 'users#login'
